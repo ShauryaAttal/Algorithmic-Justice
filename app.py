@@ -53,11 +53,33 @@ df, X_train, X_test, y_train, y_test = load_data()
 
 @st.cache_resource
 # 3. Function to load the model --------------------------------------------------------------------------------------
-def load_model():
-    model = load('./THGBmodelamazing.joblib')
-    return model
+def load_model(tuned=False, X_train=None, y_train=None):
+    if tuned:
+        # Manually set hyperparameters for tuning
+        modelHGBC = HistGradientBoostingClassifier(
+            max_iter=100,  # Number of boosting iterations
+            learning_rate=0.05,  # Step size for each boosting step
+            max_depth=5,  # Maximum depth of the trees
+            l2_regularization=0.1,  # L2 regularization term
+            random_state=1
+        )
+    else:
+        # Define a base HistGradientBoostingClassifier
+        modelHGBC = HistGradientBoostingClassifier(random_state=1)
 
-model = load_model()
+    # Fit the model
+    modelHGBC.fit(X_train, y_train)
+
+    return modelHGBC
+
+# Assuming X_train, X_test, y_train, y_test are defined elsewhere
+model = load_model(tuned=True, X_train=X_train, y_train=y_train)
+
+# Evaluate the model
+y_pred_hgbc = model.predict(X_test)
+accuracy_hgbc = accuracy_score(y_test, y_pred_hgbc)
+
+print("Tuned Histogram Gradient Boosting Classifier Model Accuracy:"+ str(round(accuracy_hgbc, 6)* 100)+ "%")
 
 # 4. Our Site Design
 # Streamlit title page configuration-------------------------------------------------------------------------------
