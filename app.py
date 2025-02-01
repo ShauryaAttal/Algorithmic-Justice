@@ -57,7 +57,7 @@ df, X_train, X_test, y_train, y_test = load_data()
 #    model = load('THGBmodelamazing.joblib')
 #    return model
 
-model = load('THGBmodelamazing.joblib')
+model = load('./THGBmodelamazing.joblib')
 
 # 4. Our Site Design
 # Streamlit title page configuration-------------------------------------------------------------------------------
