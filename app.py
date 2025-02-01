@@ -51,7 +51,13 @@ def load_data():
 # Call the function to load the data and get the datasets for model training and evaluation.
 df, X_train, X_test, y_train, y_test = load_data()
 
-model = load('MLPmodel.joblib')
+@st.cache_resource
+# 3. Function to load the model --------------------------------------------------------------------------------------
+def load_model():
+    model = load('THGBmodelamazing.joblib')
+    return model
+
+model = load_model()
 
 # 4. Our Site Design
 # Streamlit title page configuration-------------------------------------------------------------------------------
