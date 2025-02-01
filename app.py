@@ -54,8 +54,7 @@ df, X_train, X_test, y_train, y_test = load_data()
 @st.cache_resource
 # 3. Function to load the model --------------------------------------------------------------------------------------
 def load_model():
-    model = MLPClassifier(hidden_layer_sizes=(10,10,10), random_state=1, max_iter=500)
-    model.fit(X_train, y_train)
+    model = load('THGBmodelamazing.joblib')
     return model
 
 model = load_model()
