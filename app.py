@@ -53,11 +53,11 @@ df, X_train, X_test, y_train, y_test = load_data()
 
 @st.cache_resource
 # 3. Function to load the model --------------------------------------------------------------------------------------
-#def load_model():
-#    model = load('THGBmodelamazing.joblib')
-#    return model
+def load_model():
+    model = load('./THGBmodelamazing.joblib')
+    return model
 
-model = load('./THGBmodelamazing.joblib')
+model = load_model()
 
 # 4. Our Site Design
 # Streamlit title page configuration-------------------------------------------------------------------------------
