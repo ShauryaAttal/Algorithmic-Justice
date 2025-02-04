@@ -79,7 +79,7 @@ y_pred_hgbc = model.predict(X_test)
 accuracy_hgbc = accuracy_score(y_test, y_pred_hgbc)
 
 # Display accuracy in the Streamlit app
-st.write(f"Tuned Histogram Gradient Boosting Classifier Model Accuracy: {round(accuracy_hgbc, 6) * 100}%")
+print(f"Tuned Histogram Gradient Boosting Classifier Model Accuracy: {round(accuracy_hgbc, 6) * 100}%")
 
 # 4. Streamlit site design
 st.title("Criminal Justice Neural Network Model")
